@@ -1,0 +1,21 @@
+<h1 class="text-center">logIn Form</h1>
+
+<form >
+ <div class="container">
+    <label for="email"><b>email</b></label>
+    <input type="text" placeholder="Enter email" name="email" [(ngModel)]="details.email" required>
+
+    <label for="psw"><b>password</b></label>
+    <input type="password" placeholder="Enter Password" name="password" [(ngModel)]="details.password" required>
+        
+    <button type="submit" (click)="addData(details)" routerLink="/header">Login</button>
+    <label>
+      <input type="checkbox" checked="checked" name="remember"> Remember me
+    </label>
+  </div>
+
+  <div class="container" style="background-color:#f1f1f1">
+    <button type="button" class="signupbtn" routerLink="/signUp">SignUp</button>
+    <span class="psw">Forgot <a routerLink="">password?</a></span>
+  </div>
+</form>
