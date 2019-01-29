@@ -1,0 +1,9 @@
+<app-header></app-header>
+<div class="container" style="margin-top: 25px;">
+	<div class="panel panel-default  col-md-6" *ngFor="let post of friends,let i=index">
+		<div class="panel-body">
+			<h4>Author</h4>
+			<p>{{post.content}}</p>
+		</div>
+	</div>
+</div>

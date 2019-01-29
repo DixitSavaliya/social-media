@@ -22,12 +22,18 @@ app.use(bodyParser.json());
 
 app.post('/user/signUp',userController.signUp);
 app.post('/user/logIn' ,userController.logIn);
+app.get('/user',userController.searchUser);
+app.post('/user/follow',userController.addFriend);
+app.post('/user/unFollow',userController.unFollow);
 
 app.post('/post',postController.addPost);
 app.get('/post',postController.getPosts);
+app.get('/post/:userId',postController.getUsersPost);
 app.put('/post',postController.deletePost);
 app.get('/post',postController.getPostById);
 app.put('/post',postController.updatePost);
+app.get('/post/get-friend-post/:requestedUser',postController.getMyFriendPost);
+
 
 
 

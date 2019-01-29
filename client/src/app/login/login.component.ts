@@ -21,8 +21,8 @@ export class LoginComponent implements OnInit {
  addData(details){
 		console.log("details", details);
 		this._userService.logIn(details).subscribe((res: any) => {
-			console.log("response",res);
-		localStorage.setItem("user",JSON.stringify(res));
+			console.log("response",res.user);
+		localStorage.setItem("user",JSON.stringify(res.user));
 		this.router.navigate(['/mywall']);
 
 			

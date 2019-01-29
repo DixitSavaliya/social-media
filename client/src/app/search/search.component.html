@@ -1,0 +1,28 @@
+<div class="row">
+	<div class="col-md-6 offset-3">
+		<input type=" text" name="key" class="form-control" id="key" placeholder="search friend" [(ngModel)]="key">
+</div> 
+<div class="col-md-3">
+	<button type="submit" class="btn btn-success col-md-3" (click)="searchUser()">search</button>
+</div>
+</div>
+<hr/><hr/>
+
+<div class="container col-md-6">
+	<table class="table table-striped" *ngIf="users">
+		<thead>
+			<tr>
+				<th>first_name</th>
+				<th>last_name</th>
+				<th>action</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngFor="let user of users; let i=index">
+				<td>{{user.first_name}}</td>
+				<td>{{user.last_name}}</td>
+				<td *ngIf="!user.isFriend"><button type="submit" class="btn btn-info" (click)="addFriends(user._id)">Follow</button></td>
+				<td *ngIf="user.isFriend"><button type="submit" class="btn btn-info" (click)="removeFriends(user._id)">Unfollow</button>
+		</tbody>
+	</table>
+</div>

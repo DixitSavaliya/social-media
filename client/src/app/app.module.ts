@@ -15,6 +15,10 @@ import { MyprofileComponent } from './myprofile/myprofile.component';
 import { MyconnectionComponent } from './myconnection/myconnection.component';
 import { ChatComponent } from './chat/chat.component';
 import { PostComponent } from './post/post.component';
+import { AllpostComponent } from './allpost/allpost.component';
+import { SearchComponent } from './search/search.component';
+import { FeedsComponent } from './feeds/feeds.component';
+
 
 @NgModule({
   declarations: [
@@ -27,7 +31,11 @@ import { PostComponent } from './post/post.component';
     MyprofileComponent,
     MyconnectionComponent,
     ChatComponent,
-    PostComponent
+    PostComponent,
+    AllpostComponent,
+    SearchComponent,
+    FeedsComponent,
+  
   ],
   imports: [
     BrowserModule,

@@ -8,6 +8,15 @@ import  {MywallComponent} from './mywall/mywall.component';
 import  {MyprofileComponent} from './myprofile/myprofile.component';
 import {MyconnectionComponent} from './myconnection/myconnection.component';
 import {ChatComponent} from './chat/chat.component';
+import {PostComponent} from './post/post.component';
+import  {AllpostComponent} from './allpost/allpost.component';
+import {SearchComponent} from './search/search.component';
+import {FeedsComponent} from './feeds/feeds.component';
+
+
+
+
+
 
 
 
@@ -20,7 +29,11 @@ const routes: Routes = [
 	{path: 'mywall', component:MywallComponent},
 	{path: 'myprofile', component:MyprofileComponent},
 	{path: 'myconnection', component:MyconnectionComponent},
-	{path: 'chat', component:ChatComponent}];
+	{path: 'chat', component:ChatComponent},
+	{path: 'post', component:PostComponent},
+	{path: 'allpost',component:AllpostComponent},
+	{path: 'search',component:SearchComponent},
+	{path: 'feeds',component:FeedsComponent}];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
