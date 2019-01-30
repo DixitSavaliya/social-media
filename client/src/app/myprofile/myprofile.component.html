@@ -1,1 +1,25 @@
-<app-header></app-header>
+<app-header></app-header><br><br>  
+	<div class="row">
+		<div class="col-md-11">
+			<div >
+				
+			</div>
+			
+			<form style="border: 1px solid; background-color: green;">
+				<div class="form-group"><br>
+					<label style="color: yellow;">first_name</label>
+					<input type="text" class="form-control" name="first_name" [(ngModel)]="detail.first_name">
+					<label style="color: yellow;">last_name</label>
+					<input type="text" class="form-control" name="last_name" [(ngModel)]="detail.last_name"><br>
+					<label style="color: yellow;">Email:</label>
+					<input type="email" class="form-control" name="email" placeholder="Enter email" [(ngModel)]="detail.email"><br><br>
+					<label style="color: yellow;" >Date of Birth</label>
+					<input type="text" class="form-control" name="dob" placeholder="Date of Birth" [(ngModel)]="detail.dob"><br><br>
+					
+				</div>
+			</form>
+
+		</div>
+
+	</div>
+

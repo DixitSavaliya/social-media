@@ -72,6 +72,36 @@ userController.unFollow = function(req,res){
 	})
 }
 
+userController.getUserById=function(req,res){
+
+
+	userModel.findOne({_id:req.params.id},function(err,foundUser)
+	{
+		console.log("foundUser",req.params.id);
+		res.send(err || foundUser);
+	})
+}
+
+userController.getMyAllFriendsById = function(req,res){
+
+	var currentUser = req.params.requestedUser;
+	console.log("id",req.params.requestedUser);
+	userModel
+	.findOne({_id:currentUser})
+	.exec((err,result)=>{
+		if(err) {res.status(500).send(err);}
+			userModel
+			.find({'_id': { $in: result.friend }})
+			.populate('users')
+			.exec((err, friend)=>{
+				if(err) {res.status(500).send(err);}
+				console.log("==========&%^$&$$%^$%^%&^%$^",friend);
+				res.status(200).send(friend);
+			})
+	})
+
+}
+
 
 
 module.exports = userController;

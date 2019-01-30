@@ -1,1 +1,10 @@
 <app-header></app-header>
+
+<br><br>
+ 
+  <div class="panel panel-default" *ngFor="let u of friends,let i=index">
+    <div class="panel-body">
+    	<i class="fas fa-user-friends"></i><h1>{{u.first_name}} {{u.last_name}}</h1>
+    	<button type="submit" class="btn btn-info" (click)="removeFriend(u._id)">Unfollow</button>
+    </div>
+  </div>

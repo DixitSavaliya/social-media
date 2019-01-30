@@ -18,6 +18,7 @@ import { PostComponent } from './post/post.component';
 import { AllpostComponent } from './allpost/allpost.component';
 import { SearchComponent } from './search/search.component';
 import { FeedsComponent } from './feeds/feeds.component';
+import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
 
 
 @NgModule({
@@ -35,6 +36,7 @@ import { FeedsComponent } from './feeds/feeds.component';
     AllpostComponent,
     SearchComponent,
     FeedsComponent,
+    ResetpasswordComponent,
   
   ],
   imports: [

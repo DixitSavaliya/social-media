@@ -12,6 +12,8 @@ import {PostComponent} from './post/post.component';
 import  {AllpostComponent} from './allpost/allpost.component';
 import {SearchComponent} from './search/search.component';
 import {FeedsComponent} from './feeds/feeds.component';
+import {ResetpasswordComponent} from './resetpassword/resetpassword.component';
+
 
 
 
@@ -33,7 +35,8 @@ const routes: Routes = [
 	{path: 'post', component:PostComponent},
 	{path: 'allpost',component:AllpostComponent},
 	{path: 'search',component:SearchComponent},
-	{path: 'feeds',component:FeedsComponent}];
+	{path: 'feeds',component:FeedsComponent},
+	{path: 'resetpassword',component:ResetpasswordComponent}];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

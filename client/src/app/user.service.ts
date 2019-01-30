@@ -44,4 +44,17 @@ export class UserService {
        var body = {requestedUser:JSON.parse(localStorage.getItem('user'))._id, userTobeUnFollowed:_id};
        return this.http.post("http://localhost:3000/user/unFollow",body);
   }
+
+  getUserById(id){
+
+    console.log("profile",id);
+    
+    return this.http.get("http://localhost:3000/user/"+id);
+  }
+
+  getMyAllFriendsById(currentUser){
+
+    console.log("myFriends",currentUser);
+    return this.http.get("http://localhost:3000/user/get-friend/"+currentUser);
+  }
 }
