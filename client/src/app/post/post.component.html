@@ -1,12 +1,11 @@
 <app-header></app-header>
-<div class="container">
+
   <h2>Add post</h2>
  
-  <form class="form-control">
+  <form #myForm="ngForm" (submit)="addPost(detail); myForm.reset()">
     <div class="form-group">
-      
-      <textarea class="form-control" rows="5"  [(ngModel)]="detail.content" name="content"></textarea>
-      <button class="button" (click)="addPost(detail)">post</button>
+      <textarea class="form-control" rows="5" [(ngModel)]="detail.content" name="content"></textarea><br>
+      <input type="file" name="fileUpload" (change)="changFile($event)" [(ngModel)]="detail.fileName"><br>
+      <button class="button">post</button>
     </div>
   </form>
-</div>

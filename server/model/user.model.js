@@ -7,8 +7,10 @@ var mongoose = require('mongoose');
   	dob : String,
   	email : String,
   	password : String,
-    post : [{ type:Schema.Types.ObjectId, ref:"posts"}],
-    friend: [{ type:Schema.Types.ObjectId, ref:'users'}]
+    friend: [{ type:Schema.Types.ObjectId, ref:'users'}],
+    fileName:String,
+    cover:String
+
   	}
 
  

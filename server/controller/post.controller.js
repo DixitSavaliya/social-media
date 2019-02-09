@@ -2,27 +2,17 @@ var postModel = require('../model/post.model');
 var userModel = require('../model/user.model');
 var postController = {};
 
-
-
 postController.addPost = function(req,res){
-	console.log(req.body);
-	var userId=req.body.userId;
-	var post=new postModel(req.body);
+	console.log("post______++++++",req.body);
+	var userId = req.body.userId;
+	console.log("USERID=-=-=-=-",userId);
+	var post = new postModel(req.body);
 	console.log("addPost",post);
-	post.save(function(err,savedPost){
-		if(err){res.status(500).send("server err")}
-			else{
-				userModel.findOne({_id:userId})
-				.exec((err,user)=>{
-					if(err) {res.status(500).send("server err")}
-						else{
-							user.post.push(savedPost._id);
-							user.save();
-							res.status(200).send(savedPost);
-						}
-					})
-			}
-		})
+	post.save(function(err,savedUser){
+		console.log(savedUser);
+		res.send(savedUser);
+
+	})
 }	
 
 postController.deletePost = function(req,res){
@@ -59,10 +49,10 @@ postController.getPosts = function(req,res){
 
 postController.getUsersPost = function(req,res){
 	var userId = req.params.userId;
-	userModel
-	.findOne({ _id: userId })
-	.populate('post')
-	.select('post')
+	console.log("userId",userId);
+	postModel
+	.find({ userId:userId })
+	.populate('posts')
 	.exec((err, result)=>{
 		if (err) { res.status(500).send(err); }
 		res.status(200).send(result);
@@ -75,20 +65,111 @@ postController.getMyFriendPost = function(req,res){
 	userModel
 	.findOne({_id:currentUser})
 	.exec((err,result)=>{
-		if(err) {res.status(500).send(err);}
-			userModel
-			.find({'_id': { $in: result.friend }})
-			.populate('post')
-			.select('post')
-			.exec((err, posts)=>{
-				if(err) {res.status(500).send(err);}
-				console.log("POSTS==========&%^$&$$%^$%^%&^%$^",posts);
-				res.status(200).send(posts);
-			})
+		if (err){
+			console.log("ERROR#$#@$@@#@$##$$#$#", err);
+			return res.status(500).send(err);
+		}
+		postModel.find({'userId':{$in:result.friend}})
+		.populate('comment')
+		.populate({path: 'comment', populate: 'userId' })
+		.populate({path: 'comment', populate: 'comment' })
+		.exec((err,post)=>{
+			if(err){res.status(500).send(err);}
+			console.log("posts",post);
+			res.status(200).send(post);
+		})
+
 	})
 }
 
+postController.uploadFile = function(req, res){
+	console.log("upload files ================++>" ,req.body);
+	var sampleFile = req.files.uploadFile;
+	console.log("Single FILE UPLOAD TEST : req.files = ",sampleFile);
 
+	sampleFile.mv('./uploads/'+sampleFile.name, function(err,result) {
+		if (err){
+			console.log("ERROR#$#@$@@#@$##$$#$#", err);
+			return res.status(500).send(err);
+		}
+		else{
+
+			var userId = req.body.userId;
+			console.log("===========>>>>>userid");
+			var FileName = req.body.fileName;
+			console.log("filename=============>",FileName);
+			var fileNamearr = FileName.split("\\");
+			console.log("filearray==============<<<<>>",fileNamearr);
+			var FileName = fileNamearr[2];
+			console.log("filename===================><><>",FileName);
+			var postdata = {
+
+				content: req.body.content,
+				dateTime: req.body.dateTime,
+				publish: req.body.publish,
+				fileName: '/uploads/'+FileName,
+				userId: req.body.userId
+
+			};
+
+			var postdt = new postModel(postdata);
+			console.log("addPost",postdt);
+			postdt.save(function(err,savedUser){
+				console.log(savedUser);
+				res.send(savedUser);
+
+			})
+		}
+
+		
+	});
+}
+
+postController.like = function(req,res){
+
+	var postId = req.body.postId;
+	console.log("postid[[[]][][]",postId);
+	var userId = req.body.userId;
+	console.log("userid[[]][][]",userId);
+	
+	postModel.findOne({_id:postId}).exec((err,result)=>{
+
+		console.log("result=-=-=-=-=-=-",result);
+		if(err){
+			res.status(500).send("errr");
+		}else{
+
+			console.log("result==-=-=-",res);
+			result.like.push(userId);
+			result.save();
+			res.status(200).send("result");
+		}
+	})
+}
+
+postController.dislike = function(req,res){
+
+	var postId = req.body.postId;
+	console.log("postid-=-=-=-",postId);
+	var user = req.body.userId;
+	console.log("userid[][]][][][][]",user);
+
+	postModel.remove({_id:postId},function(err,result){
+		console.log("postid*****",postId);
+		console.log("result__________{}{}{}{",result);
+		// var index = result.like.indexOf(user);
+		// console.log(index);
+		// if(index == -1){
+		// 	console.log("userId not found");
+		// 	res.status(401).send("Bad Request");
+		// }
+		// else{
+		// 	result.like.splice(index,1);
+		// 	result.save();
+		// 	res.send(result);
+		// }
+	})
+}
 
 
 

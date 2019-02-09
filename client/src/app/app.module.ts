@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
-
+import { DragAndDropModule } from 'angular-draggable-droppable';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -19,6 +19,7 @@ import { AllpostComponent } from './allpost/allpost.component';
 import { SearchComponent } from './search/search.component';
 import { FeedsComponent } from './feeds/feeds.component';
 import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
+import { ChatService } from './chat.service';
 
 
 @NgModule({
@@ -43,9 +44,10 @@ import { ResetpasswordComponent } from './resetpassword/resetpassword.component'
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    DragAndDropModule 
   ],
-  providers: [],
+  providers: [ChatService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

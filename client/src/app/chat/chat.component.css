@@ -1,0 +1,25 @@
+
+.chat{
+
+	
+	border-radius: 6px 6px 0px 0px;
+}
+
+.chat ul.list-group{
+
+	display: inline-block;
+	width: 100%;
+	height: 300px;
+	overflow-y: auto;
+	padding: 20px 20px 0px;
+	margin: 0px;
+	float: left;
+}
+
+.chat .text-left{
+	font-size: 20px;
+	font-weight: 600;
+	padding: 20px;
+	border-radius: 6px 6px 0px 0px;
+	text-transform: capitalize;
+}

@@ -40,9 +40,9 @@ export class UserService {
 
   unFollow(_id){
 
-      console.log("unfriend",_id);
-       var body = {requestedUser:JSON.parse(localStorage.getItem('user'))._id, userTobeUnFollowed:_id};
-       return this.http.post("http://localhost:3000/user/unFollow",body);
+    console.log("unfriend",_id);
+    var body = {requestedUser:JSON.parse(localStorage.getItem('user'))._id, userTobeUnFollowed:_id};
+    return this.http.post("http://localhost:3000/user/unFollow",body);
   }
 
   getUserById(id){
@@ -56,5 +56,21 @@ export class UserService {
 
     console.log("myFriends",currentUser);
     return this.http.get("http://localhost:3000/user/get-friend/"+currentUser);
+  }
+
+  uploadFile(file: FileList, data, changeType){
+    console.log(data);
+    let formData = new FormData();
+    formData.append('change', changeType);
+    formData.append('userId', data);
+    formData.append("uploadFile", file[0]);
+    return this.http.post('http://localhost:3000/user/file-upload', formData);
+  }
+  update(detail){
+
+    console.log("detail",detail);
+
+    return this.http.post("http://localhost:3000/user/updatedata",detail);
+
   }
 }

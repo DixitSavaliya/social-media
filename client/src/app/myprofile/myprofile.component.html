@@ -1,25 +1,62 @@
-<app-header></app-header><br><br>  
-	<div class="row">
-		<div class="col-md-11">
-			<div >
-				
+<app-header></app-header>
+<div  style="padding-top: 50px;margin-left: 60px;">
+	<div class="col-md-6 col-md-offset-3">
+		<div class="cardhovercard">
+			<div class="cardheader">
+				<img  style="width: 100%;" src="http://localhost/social-media/server{{detail.cover}}" onerror="this.src='assets/d1.jpeg'">
+
+				<div class="picture">
+					<!-- <label style="color: black;">Cover</label> -->
+					<input type="file" id="cover" name="fileUpload" (change)="changFile($event, 'cover')" style="display: none;">
+					<label style="margin: -15px;" for="cover"><i class="fas fa-camera"></i></label>
+				</div>
+
 			</div>
-			
-			<form style="border: 1px solid; background-color: green;">
-				<div class="form-group"><br>
-					<label style="color: yellow;">first_name</label>
-					<input type="text" class="form-control" name="first_name" [(ngModel)]="detail.first_name">
-					<label style="color: yellow;">last_name</label>
-					<input type="text" class="form-control" name="last_name" [(ngModel)]="detail.last_name"><br>
-					<label style="color: yellow;">Email:</label>
-					<input type="email" class="form-control" name="email" placeholder="Enter email" [(ngModel)]="detail.email"><br><br>
-					<label style="color: yellow;" >Date of Birth</label>
-					<input type="text" class="form-control" name="dob" placeholder="Date of Birth" [(ngModel)]="detail.dob"><br><br>
-					
+			<div class="text-center">
+				<div class="avatar">
+					<img src="http://localhost/social-media/server{{detail.fileName}}"  onerror="this.src='assets/rao.jpeg'" class="img-rounded">
+					<div class="picture">
+						<!-- <label style="color: black;">Profile</label> -->
+						<input type="file" id="profile" name="fileUpload" (change)="changFile($event, 'profile')" style="display: none;">
+						<label style="margin: 17px;" for="profile"><i class="fas fa-camera"></i></label>
+					</div>
+				</div>
+			</div>
+			<form style=" background-color: #00BCD4;padding:15px;">
+				<div class="form-group">
+					<div class="row">
+						<div class="col-md-6">
+							<label style="color: black;">FirstName:</label>
+							<input type="text" class="form-control" name="first_name" [(ngModel)]="detail.first_name">
+						</div>
+						<div class="col-md-6">
+							<label style="color: black;">LastName:</label>
+							<input type="text" class="form-control" name="last_name" [(ngModel)]="detail.last_name">
+						</div>
+						<div class="col-md-6">
+							<label style="color:black;">Email:</label>
+							<input type="email" class="form-control" name="email" placeholder="Enter email" [(ngModel)]="detail.email">
+						</div>
+						<div class="col-md-6">
+							<label style="color: black;" >Date of Birth</label>
+							<input type="text" class="form-control" name="dob" placeholder="Date of Birth" [(ngModel)]="detail.dob">
+						</div>
+						<div class="col-md-6">
+							<!-- <label style="color: black;">Profile</label>
+							<input type="file" id="profile" name="fileUpload" (change)="changFile($event, 'profile')" style="display: none;">
+							<label for="profile"><i class="fas fa-camera"></i></label> -->
+						</div>
+						<div class="col-md-6">
+							<!-- <label style="color: black;">Cover</label>
+							<input type="file" id="cover" name="fileUpload" (change)="changFile($event, 'cover')" style="display: none;">
+							<label for="cover"><i class="fas fa-camera"></i></label> -->
+						</div>
+						<div class="col-md-12 text-center">
+							<button class="btn btn-secondary btn-lg" style="margin-top: 20px;" (click)="updateProfile(detail)">Save</button>
+						</div>
+					</div>
 				</div>
 			</form>
-
 		</div>
-
 	</div>
-
+</div>

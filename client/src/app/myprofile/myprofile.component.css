@@ -1,0 +1,58 @@
+.cardhovercard {
+    position: relative;
+    padding-top: 0;
+    overflow: hidden;
+    
+}
+.cardhovercard .cardheader {
+    background-size: cover;
+    display: inline-block;
+    width: 100%;
+    height: 50%;
+    border-radius: 6px 6px 0px 0px;
+    overflow: hidden;
+    position: relative;
+}
+.avatar {
+    position: relative;
+    margin-top: -150px;
+    margin-bottom: 20px;
+    display: table;
+    margin-left: auto;
+    margin-right: auto;
+}
+.avatar img { 
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+}
+.form-group label {
+    margin-top: 20px;
+}
+input[type=file] + label{
+    width: 100%;
+    margin-top: 0px;
+}
+input[type=file] + label i{
+    font-size: 40px;
+    color: #fff;
+    text-shadow: -2px 4px 30px #9E9E9E;
+}
+.picture {
+    display: block;
+    position: absolute;
+    margin: auto;
+    height: 40px;
+    width: 40px;
+}
+.avatar .picture{
+    top: auto;
+    left: 0;
+    right: 0;
+    bottom: 20px;
+}
+.cardheader .picture{
+    top: 20px;
+    right: 20px;
+    left: auto;
+    bottom: auto;
+}

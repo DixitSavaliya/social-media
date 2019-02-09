@@ -1,10 +1,13 @@
 <app-header></app-header>
 
 <br><br>
- 
-  <div class="panel panel-default" *ngFor="let u of friends,let i=index">
-    <div class="panel-body">
-    	<i class="fas fa-user-friends"></i><h1>{{u.first_name}} {{u.last_name}}</h1>
-    	<button type="submit" class="btn btn-info" (click)="removeFriend(u._id)">Unfollow</button>
-    </div>
-  </div>
+
+	<div class="panel panel-default col-md-8" style="padding: 0;" *ngFor="let u of friends,let i=index">
+	<div class="panel-body" style="background-color:#6698bf;" draggable="true">
+		<div *ngIf="u.fileName" >
+			<img height="150" width="200" src="http://localhost/social-media/server{{u.fileName}}">
+		</div>
+		<h1>{{u.first_name}} {{u.last_name}}</h1>
+		<button type="submit" class="btn btn-info" (click)="removeFriend(u._id)">Unfollow</button>
+	</div>
+</div>

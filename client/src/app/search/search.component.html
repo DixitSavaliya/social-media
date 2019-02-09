@@ -1,4 +1,5 @@
-<div class="row">
+<app-header></app-header>
+<div class="row" style="margin-top: 180px;margin-left: 200px;">
 	<div class="col-md-6 offset-3">
 		<input type=" text" name="key" class="form-control" id="key" placeholder="search friend" [(ngModel)]="key">
 </div> 
@@ -6,9 +7,9 @@
 	<button type="submit" class="btn btn-success col-md-3" (click)="searchUser()">search</button>
 </div>
 </div>
-<hr/><hr/>
 
-<div class="container col-md-6">
+
+<div class="container col-md-6" style="margin-left: 200px;">
 	<table class="table table-striped" *ngIf="users">
 		<thead>
 			<tr>
