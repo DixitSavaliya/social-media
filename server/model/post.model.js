@@ -14,5 +14,13 @@ var postSchema = new Schema({
 
 });
 
+ postSchema.pre('find',function(next){
+
+  this.populate('userId');
+  next();
+
+}
+)
+
 module.exports = mongoose.model('posts',postSchema);
 

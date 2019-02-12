@@ -3,7 +3,7 @@
 	<div class="panel panel-default col-md-offset-3 col-md-6" *ngFor="let post of posts,let i=index" style="background-color: #6698bf;color: black;">
 		<div class="panel-body">
 			<h4>Author</h4>
-			<p>{{post.content}}</p>
+			<p style="word-break: break-all;">{{post.content}}</p>
 			<div *ngIf="post.fileName">
 				<img height="300" width="300" src="http://localhost/social-media/server{{post.fileName}}">
 			</div>

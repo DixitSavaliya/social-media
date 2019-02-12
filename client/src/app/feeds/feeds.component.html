@@ -1,53 +1,52 @@
 <app-header></app-header>
-<div class="col-md-5 col-md-offset-3" style="margin-top: 25px;">
+<div class="col-md-5 col-md-offset-3" style="margin-top: 25px;padding: 0px;">
 	<div class="panel panel-default" *ngFor="let friend of friends,let i=index" style="background-color: white;color: black;" >
 
 		<div class="panel-body" style="padding: 0px;">
+			<img height="150" width="200" src="http://localhost/social-media/server{{friend.userId[0].fileName}}" style="height: 45px;width: 55px;padding-left: 5px; padding-top: 12px;" >
+			<h4 style="margin-top:-32px; padding-left: 60px;">{{friend.userId[0].first_name}}
+				{{friend.userId[0].last_name}} <i class="fas fa-ellipsis-h pull-right" style="padding-right: 15px;"></i></h4>
 
+				<p style="padding-left: 10px;padding-top: 18px;">{{friend.content}}</p>
+				<div *ngIf="friend.fileName">
+					<img  src="http://localhost/social-media/server{{friend.fileName}}"  class="responsive">
+				</div><hr style="margin-top: 15px; margin-bottom: 0px;" />
+				<div style="background-color: white;padding-left: 40px;" class="container-fluid">
+					<div class="row" style="margin-right: -15px;">
 
-			<img height="150" width="200" src="http://localhost/social-media/server{{friend.fileName}}" style="height: 45px;width: 55px;padding-left: 5px; padding-top: 12px;" >
-			<h4 style="margin-top:-32px; padding-left: 60px;">author<i class="fas fa-ellipsis-h pull-right" style="padding-right: 15px;"></i></h4>
+						<h3 class="like" (click)="postLike(friend._id)" style="cursor: pointer;font-weight: 600;font-size: 14px;margin-right: 20px;"><i class="fa fa-thumbs-up" *ngIf="!friend.isLike" (click)="postLike(friend._id)"></i > LIKE</h3>&nbsp;
+						<p>{{friend.like.length}} </p>
+						<i class="fa fa-thumbs-down" *ngIf="friend.isLike" (click)="postDisLike(friend._id)" style="color: #606770;"></i >&nbsp;
+						<!-- <p>{{friend.like.length}} </p> -->
 
-			<p style="padding-left: 10px;padding-top: 15px;">{{friend.content}}</p>
-			<div *ngIf="friend.fileName">
-				<img  src="http://localhost/social-media/server{{friend.fileName}}"  class="responsive">
-			</div><hr style="margin-top: 15px; margin-bottom: 0px;" />
-			<div style="background-color: white;padding-left: 40px;" class="container-fluid">
-				<div class="row" style="margin-right: -15px;">
+					</div>
+					<div class="row" >
+						<h3 for="cmt" style="text-align: center;margin-top: -52px;color: #606770;cursor: pointer;font-weight: 600;font-size: 14px;"  data-target="#myModal"><i class="far fa-comment-alt"></i> COMMENT</h3>
+					</div>
 
-					<h3 class="like" (click)="postLike(friend._id)" style="cursor: pointer;font-weight: 600;font-size: 14px;margin-right: 20px;"><i class="fa fa-thumbs-up" *ngIf="!friend.isLike" (click)="postLike(friend._id)"></i > LIKE</h3>&nbsp;
-					<p>{{friend.like.length}} </p>
-					<i class="fa fa-thumbs-down" *ngIf="friend.isLike" (click)="postDisLike(friend._id)" style="color: #606770;"></i >&nbsp;
-					<!-- <p>{{friend.like.length}} </p> -->
+					<div class="row" >
+						<h3 style="text-align: right;margin-top: -52px;margin-right: 10px;color: #606770;cursor: pointer;font-weight: 600;font-size: 14px;"><i class="fas fa-share"></i> Share</h3>
+					</div><hr style="margin-top: -25px;margin-bottom: 0px;" />
 
-				</div>
-				<div class="row" >
-					<h3 for="cmt" style="text-align: center;margin-top: -52px;color: #606770;cursor: pointer;font-weight: 600;font-size: 14px;margin-right: 40px;"  data-target="#myModal"><i class="far fa-comment-alt"></i> COMMENT</h3>
-				</div>
+					<div  class="row" style="margin-right: 0px;margin-left: -25px;">
+						<div class="commentdiv" >
+							<div *ngFor="let i of friend.comment" id="myModal">
 
-				<div class="row" >
-					<h3 style="text-align: right;margin-top: -52px;margin-right: 40px;color: #606770;cursor: pointer;font-weight: 600;font-size: 14px;"><i class="fas fa-share"></i> Share</h3>
-				</div><hr style="margin-top: -25px;margin-bottom: 0px;" />
+								<img height="150" width="200" src="http://localhost/social-media/server{{i.userId.fileName}}" style="height: 40px;width: 50px;vertical-align: middle;" class="img-circle" >
+								<p class="usercomment">{{i.userId.first_name}}</p>
+								<p class="cmt">{{i.comment}}</p>
+							</div>
+							<div class="showcomment form-group col-md-12">
+								<img height="40" width="50" src="http://localhost/social-media/server{{friend.userId[0].fileName}}" class="img-circle pull-left" style="margin-top: -3px;vertical-align: middle;" >
+								<input type="text" name="comment"  class="form-control pull-left"  [(ngModel)]="comment" style="margin-left: 5px;width: 50%;border-radius: 12px; margin-top: 9px; margin-top: -1px;" required>
 
-				<div  class="row" style="margin-right: 0px;margin-left: -25px;">
-					<div class="commentdiv" >
-						<div *ngFor="let i of friend.comment" id="myModal">
+								<i class="far fa-share-square pull-left" (click)="commentUser(friend._id,comment)" style="margin-top: 12px;font-size: 25px; margin-left: 5px;margin-top: 1px;"></i>
+								<!-- <button type="button" class="btn btn-info pull-left" (click)="commentUser(friend._id,comment)" style="border-radius: 15px;margin-top: 9px;margin-left: 5px;">Comment</button> -->
+							</div>
 
-							<img height="150" width="200" src="http://localhost/social-media/server{{i.userId.fileName}}" style="height: 40px;width: 50px;" class="img-circle" >
-							<p class="usercomment">{{i.userId.first_name}}</p>
-							<p class="cmt">{{i.comment}}</p>
 						</div>
-						<div class="showcomment form-group">
-							<img src="/assets/dd.jpeg" alt="dixit" height="40" width="50" class="img-circle pull-left"  style="margin-top: -3px;">
-							<input type="text" name="comment"  class="form-control pull-left" [(ngModel)]="comment" style="margin-left: 5px;width: 80%;border-radius: 12px; margin-top: 9px; margin-top: -1px;">
-
-							<i class="far fa-share-square pull-left" (click)="commentUser(friend._id,comment)" style="margin-top: 12px;font-size: 25px; margin-left: 5px;margin-top: 1px;"></i>
-							<!-- <button type="button" class="btn btn-info pull-left" (click)="commentUser(friend._id,comment)" style="border-radius: 15px;margin-top: 9px;margin-left: 5px;">Comment</button> -->
-						</div>
-
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-</div>

@@ -84,7 +84,7 @@ export class FeedsComponent implements OnInit {
 
 			console.log("usercomment----",res);
 			this.comments = res;
-			this.change.detectChanges();
+			// this.change.detectChanges();
 
 		},err=>{
 			console.log("err=====-=-=-",err);
