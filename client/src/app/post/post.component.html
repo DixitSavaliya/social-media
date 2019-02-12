@@ -5,7 +5,7 @@
   <form #myForm="ngForm" (submit)="addPost(detail); myForm.reset()">
     <div class="form-group">
       <textarea class="form-control" rows="5" [(ngModel)]="detail.content" name="content"></textarea><br>
-      <input type="file" name="fileUpload" (change)="changFile($event)" [(ngModel)]="detail.fileName"><br>
+      <input type="file" name="fileUpload" (change)="changFile($event)" [(ngModel)]="detail.fileName" multiple><br>
       <button class="button">post</button>
     </div>
   </form>

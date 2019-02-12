@@ -154,20 +154,20 @@ postController.dislike = function(req,res){
 	var user = req.body.userId;
 	console.log("userid[][]][][][][]",user);
 
-	postModel.remove({_id:postId},function(err,result){
+	postModel.findOne({_id:postId},function(err,result){
 		console.log("postid*****",postId);
 		console.log("result__________{}{}{}{",result);
-		// var index = result.like.indexOf(user);
-		// console.log(index);
-		// if(index == -1){
-		// 	console.log("userId not found");
-		// 	res.status(401).send("Bad Request");
-		// }
-		// else{
-		// 	result.like.splice(index,1);
-		// 	result.save();
-		// 	res.send(result);
-		// }
+		var index = result.like.indexOf(user);
+		console.log(index);
+		if(index == -1){
+			console.log("userId not found");
+			res.status(401).send("Bad Request");
+		}
+		else{
+			result.like.splice(index,1);
+			result.save();
+			res.send(result);
+		}
 	})
 }
 

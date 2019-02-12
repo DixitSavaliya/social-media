@@ -24,7 +24,7 @@ export class AllpostComponent implements OnInit {
 		var id = JSON.parse(localStorage.getItem('user'))._id;
 		this._postService.getUsersPosts(id).subscribe((res: any) => {
 			console.log("response",res);
-			this.posts=res
+			this.posts=res;
 			console.log("posts in service",this.posts);
 
 		},

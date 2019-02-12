@@ -1,9 +1,80 @@
 .fa {
-  font-size: 50px;
+  font-size: 14px;
   cursor: pointer;
   user-select: none;
 }
 
 .fa:hover {
   color: darkblue;
+}
+.like{
+
+	margin-left: 23px;
+	margin-top: 20px;
+	margin-bottom: -32px;
+	color: #606770;
+}
+/*.comment{
+
+	margin-top: 20px;
+	text-align: center;
+}*/
+
+.usercomment{
+
+	margin-top: 5px;
+	margin-left: 65px;
+	margin-top: -25px;
+	color: #365899;
+	background-color: #f2f3f5;
+	border-radius: 18px;
+	width: 250px;
+
+}
+.cmt{
+
+	margin-left: 30px;
+	padding-left: 120px; 
+	margin: 0px 0px 10px;
+	margin-top: -29px;
+	color: black;
+
+}
+/*.share{
+
+	margin-left: 35px;
+	margin-bottom: -25px;
+	text-align: center;
+}*/
+/*.fas .fa-share{
+
+	margin-bottom:-15px;
+}
+.fas .fa-comment{
+
+	margin-bottom: 20px;
+	margin-right: 35px;
+}*/
+.fa .fa-thumbs-up{
+
+	margin-top:-60px;
+	margin-left: 10px;
+}
+.showcomment{
+
+	margin-top: 20px;
+}
+.commentdiv{
+
+	color: black;
+	margin-top: 15px;
+}
+.container-fluid{
+
+	background-color: white;
+	padding-left: 40px;
+}
+.responsive {
+  width: 100%;
+  height: auto;
 }

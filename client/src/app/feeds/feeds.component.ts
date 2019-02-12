@@ -50,7 +50,7 @@ export class FeedsComponent implements OnInit {
 			this.friends = JSON.parse(localStorage.getItem('user')).friend;
 			this.like.forEach((i)=>{
 				var flag = _.includes(this.friends, i._id);
-				i['isFriend'] = flag;
+				i['isLike'] = flag;
 				console.log(i);
 			})
 			this.change.detectChanges();
@@ -59,6 +59,8 @@ export class FeedsComponent implements OnInit {
 		},err=>{
 			console.log("err=====-=-=-",err);
 		})	
+
+		console.log("like-=-=-=-",postid);
 
 	}
 
@@ -101,4 +103,6 @@ export class FeedsComponent implements OnInit {
 			console.log("errr-=-=-=-",err);
 		})
 	}
+
+	
 }

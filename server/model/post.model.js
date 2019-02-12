@@ -9,6 +9,7 @@ var postSchema = new Schema({
 	comment:[{type:Schema.Types.ObjectId,ref:"comments"}],
 	like:[{type:Schema.Types.ObjectId,ref:"users"}],
 	userId:[{type:Schema.Types.ObjectId,ref:"users"}],
+	share:[{type:Schema.Types.ObjectId,ref:"users"}]
 
 
 });
